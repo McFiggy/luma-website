@@ -1,0 +1,169 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 142 76% 36%;
+    --radius: 0.5rem;
+    --chart-1: 142 76% 36%;
+    --chart-2: 214 84% 56%;
+    --chart-3: 142 69% 58%;
+    --chart-4: 214 77% 68%;
+    --chart-5: 142 64% 70%;
+    --luma-green: 142 76% 36%;
+    --luma-blue: 214 84% 56%;
+    --luma-light-green: 142 69% 58%;
+    --luma-light-blue: 214 77% 68%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 142 76% 36%;
+    --chart-1: 142 76% 36%;
+    --chart-2: 214 84% 56%;
+    --chart-3: 142 69% 58%;
+    --chart-4: 214 77% 68%;
+    --chart-5: 142 64% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom utilities */
+.text-luma-green {
+  color: hsl(var(--luma-green));
+}
+
+.text-luma-blue {
+  color: hsl(var(--luma-blue));
+}
+
+.bg-luma-green {
+  background-color: hsl(var(--luma-green));
+}
+
+.bg-luma-blue {
+  background-color: hsl(var(--luma-blue));
+}
+
+.bg-luma-light-green {
+  background-color: hsl(var(--luma-light-green));
+}
+
+.bg-luma-light-blue {
+  background-color: hsl(var(--luma-light-blue));
+}
+
+.border-luma-green {
+  border-color: hsl(var(--luma-green));
+}
+
+.border-luma-blue {
+  border-color: hsl(var(--luma-blue));
+}
+
+/* Gradient utilities */
+.bg-gradient-luma {
+  background: linear-gradient(135deg, hsl(var(--luma-green)) 0%, hsl(var(--luma-blue)) 100%);
+}
+
+.bg-gradient-luma-light {
+  background: linear-gradient(135deg, hsl(var(--luma-light-green)) 0%, hsl(var(--luma-light-blue)) 100%);
+}
+
+/* Animation for counting numbers */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-count-up {
+  animation: countUp 0.8s ease-out;
+}
+
+/* Parallax effect */
+.parallax-bg {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 768px) {
+  .parallax-bg {
+    background-attachment: scroll;
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--luma-green));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--luma-blue));
+}
