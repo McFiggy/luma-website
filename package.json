@@ -3,10 +3,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate"
+    "postinstall": "npx prisma generate",
+    "build": "npx prisma generate && next build",
+    "vercel-build": "npx prisma generate && next build"
   },
   "prisma": {
     "seed": "tsx --require dotenv/config scripts/seed.ts"
