@@ -5,8 +5,8 @@
   "dev": "cd app && npm run dev",
   "start": "cd app && npm run start",
   "lint": "cd app && npm run lint",
-  "build": "cd app && npm run build",
-  "vercel-build": "cd app && npm run vercel-build"
+  "build": "npx prisma generate --schema=./prisma/schema.prisma && next build",
+"vercel-build": "npx prisma generate --schema=./prisma/schema.prisma && next build""
   },
   "prisma": {
     "seed": "tsx --require dotenv/config scripts/seed.ts"
