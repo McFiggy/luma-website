@@ -1,1 +1,106 @@
 
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+    binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
+    output = "/home/ubuntu/growluma_website/nextjs_space/node_modules/.prisma/client"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model Newsletter {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  active    Boolean  @default(true)
+
+  @@map("newsletter_subscribers")
+}
+
+model Contact {
+  id           String   @id @default(cuid())
+  name         String
+  email        String
+  company      String?
+  phone        String?
+  subject      String?
+  inquiry_type String?
+  message      String
+  form_type    String   @default("contact")
+  status       String   @default("new") // new, in_progress, resolved
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("contact_submissions")
+}
+
+model PricingRequest {
+  id                 String   @id @default(cuid())
+  name               String
+  email              String
+  company            String?
+  phone              String?
+  volume             String
+  crop_type          String
+  location           String?
+  timeline           String?
+  system_interest    String[] // Array of interested systems
+  current_treatment  String?
+  additional_info    String?
+  form_type          String   @default("pricing")
+  status             String   @default("new") // new, quoted, in_progress, closed
+  priority           String   @default("normal") // low, normal, high
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@map("pricing_requests")
+}
+
+model BlogPost {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  excerpt     String
+  content     String
+  author      String
+  category    String
+  tags        String[]
+  image       String?
+  featured    Boolean  @default(false)
+  published   Boolean  @default(true)
+  publishedAt DateTime @default(now())
+  readTime    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("blog_posts")
+}
+
+model SystemLog {
+  id        String   @id @default(cuid())
+  level     String   // info, warning, error
+  message   String
+  data      Json?
+  source    String?  // api endpoint, component, etc.
+  userId    String?  // if applicable
+  createdAt DateTime @default(now())
+
+  @@map("system_logs")
+}
+
+model PageView {
+  id        String   @id @default(cuid())
+  path      String
+  userAgent String?
+  referer   String?
+  ip        String?
+  createdAt DateTime @default(now())
+
+  @@map("page_views")
+}
