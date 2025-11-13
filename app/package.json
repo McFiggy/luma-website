@@ -2,11 +2,11 @@
   "name": "app",
   "private": true,
   "scripts": {
-  "dev": "next dev",
-  "start": "next start",
-  "lint": "next lint",
-  "build": "npx prisma generate --schema=./prisma/schema.prisma && next build",
-  "vercel-build": "npx prisma generate --schema=./prisma/schema.prisma && next build"
+  "dev": "cd app && npm run dev",
+  "start": "cd app && npm run start",
+  "lint": "cd app && npm run lint",
+  "build": "cd app && npm run build",
+  "vercel-build": "cd app && npm run vercel-build"
   },
   "prisma": {
     "seed": "tsx --require dotenv/config scripts/seed.ts"
